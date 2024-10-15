@@ -1,0 +1,44 @@
+C:\Users\class\Desktop\Lab5\App1\bin\Debug\App1.exe.config
+C:\Users\class\Desktop\Lab5\App1\bin\Debug\App1.exe
+C:\Users\class\Desktop\Lab5\App1\bin\Debug\App1.pdb
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.csproj.AssemblyReference.cache
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.MainForm.resources
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.Form_1.resources
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.Properties.Resources.resources
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.csproj.GenerateResource.cache
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.exe
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.pdb
+C:\Users\class\Desktop\Lab5\App1\obj\Debug\App1.Form3.resources
+D:\Учёба\C#\Lab5\App1\bin\Debug\App1.exe.config
+D:\Учёба\C#\Lab5\App1\bin\Debug\App1.exe
+D:\Учёба\C#\Lab5\App1\bin\Debug\App1.pdb
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.csproj.AssemblyReference.cache
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.MainForm.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form2.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form3.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form1.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Properties.Resources.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.csproj.GenerateResource.cache
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.exe
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.pdb
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form4.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form5.resources
+D:\Учёба\C#\Lab5\App1\obj\Debug\App1.Form6.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\bin\Debug\App1.exe.config
+C:\Users\class\Desktop\Новая папка\Lab5\App1\bin\Debug\App1.exe
+C:\Users\class\Desktop\Новая папка\Lab5\App1\bin\Debug\App1.pdb
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.csproj.AssemblyReference.cache
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.MainForm.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form2.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form3.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form4.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form5.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form6.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Form1.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.Properties.Resources.resources
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.csproj.GenerateResource.cache
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.exe
+C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.pdb
