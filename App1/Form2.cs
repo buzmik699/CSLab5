@@ -34,34 +34,38 @@ namespace App1
         }
         
         private void button2_Click(object sender, EventArgs e)
-        {
-            int k = 1, sh = 1;
-            try
-            {
-                k = int.Parse(TextBox1.Text);
-                sh = int.Parse(TextBox2.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Некорректный ввод исходных данных", "Ошибка",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if(k <= 0 || sh <= 0)
-            {
-                MessageBox.Show("Некорректный ввод исходных данных", "Ошибка",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
-            wd = this.ClientSize.Width - sh;
-            hg = this.ClientSize.Height - sh;
-            Point[] Courn = new Point[5];
-            Courn[0] = new Point(wd / 2, hg/ 2);
-            Courn[1] = new Point(wd / 2 + sh, hg / 2);
-            Courn[2] = new Point(wd / 2 + sh, hg / 2 + sh);
-            Courn[3] = new Point(wd / 2, hg / 2 + sh);
-            Courn[4] = new Point(wd / 2, hg / 2);
-            DrawSquares(Graph, MyPen, Courn, k);
-        }
+{
+    int k = 1, sh = 1;
+    try
+    {
+        k = int.Parse(TextBox1.Text);
+        sh = int.Parse(TextBox2.Text);
+    }
+    catch
+    {
+        MessageBox.Show("Некорректный ввод исходных данных", "Ошибка",
+        MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+    if(k <= 0 || sh <= 0)
+    {
+        MessageBox.Show("Некорректный ввод исходных данных", "Ошибка",
+        MessageBoxButtons.OK, MessageBoxIcon.Error);
+        Close();
+    }
+
+    Graph.Clear(this.BackColor); // Очищаем форму перед рисованием
+
+    wd = this.ClientSize.Width - sh;
+    hg = this.ClientSize.Height - sh;
+    Point[] Courn = new Point[5];
+    Courn[0] = new Point(wd / 2, hg / 2);
+    Courn[1] = new Point(wd / 2 + sh, hg / 2);
+    Courn[2] = new Point(wd / 2 + sh, hg / 2 + sh);
+    Courn[3] = new Point(wd / 2, hg / 2 + sh);
+    Courn[4] = new Point(wd / 2, hg / 2);
+    DrawSquares(Graph, MyPen, Courn, k);
+}
+
 
 
         static void DrawSquares(Graphics g, Pen pn, Point[] Courners, int Count)

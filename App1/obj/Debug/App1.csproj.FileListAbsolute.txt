@@ -42,3 +42,19 @@ C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.csproj.Gen
 C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
 C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.exe
 C:\Users\class\Desktop\Новая папка\Lab5\App1\obj\Debug\App1.pdb
+C:\Users\buzmi\source\repos\CSLab5\App1\bin\Debug\App1.exe.config
+C:\Users\buzmi\source\repos\CSLab5\App1\bin\Debug\App1.exe
+C:\Users\buzmi\source\repos\CSLab5\App1\bin\Debug\App1.pdb
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.csproj.AssemblyReference.cache
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.MainForm.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form2.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form3.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form4.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form5.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form6.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Form1.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.Properties.Resources.resources
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.csproj.GenerateResource.cache
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.exe
+C:\Users\buzmi\source\repos\CSLab5\App1\obj\Debug\App1.pdb
