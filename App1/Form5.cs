@@ -1,138 +1,142 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
-namespace App1 
+namespace App1
 {
     public partial class Form5 : Form
-    { 
-        Graphics Graph;
-        DateTime sec;
-        Random Rand;
-        Pen MyPen;
-        SolidBrush MyBrush = new SolidBrush(Color.Black); 
-        Font MyFont;
+    {
+        private Random random = new Random();
+        private Timer fallTimer;
+        private Snowflake currentSnowflake;
 
-        public Form5()  
+        public Form5()
         {
-            InitializeComponent(); 
-            Graph = CreateGraphics();
-            MyPen = new Pen(Color.Black, 1);
-            Rand = new Random();
-            MyFont = new Font("Arial", 11);
+            InitializeComponent();
+            this.DoubleBuffered = true; // Включить двойную буферизацию для уменьшения мерцания
+
+            fallTimer = new Timer();
+            fallTimer.Interval = 30; // Частота обновления снега
+            fallTimer.Tick += FallTimer_Tick;
+
+            this.MouseClick += Form5_MouseClick;
         }
+
+       
 
         private void Form5_MouseClick(object sender, MouseEventArgs e)
         {
-            TextBox1.Visible = false;
-            TextBox1.Enabled = false;
-            label1.Visible = false;
+            int size = random.Next(50, 100); // Генерация случайного размера
+            int nestingLevel = 3; // Уровень вложенности
 
-            int k = Rand.Next(this.ClientSize.Height);
-            pictureBox1.Size = new Size(k, k);
-            pictureBox1.Location = new Point(e.X - k / 2, e.Y - k / 2);
-
-            pictureBox1.Image = new Bitmap(k, k);
-
-            using (Graphics g = Graphics.FromImage(pictureBox1.Image))  // Создать объект графики для рисования на изображении
-            {
-                var forksCount = 8;  // Количество ветвей у снежинки
-
-                // Вызов метода для рисования снежинки
-                DrawSnowflake(
-                    graphics: g,
-                    center: new Point(pictureBox1.Width / 2, pictureBox1.Height / 2),  // Центр снежинки
-                    radius: pictureBox1.Width / 3,  // Радиус снежинки
-                    radiusScale: 1f / 3,  // Масштаб радиуса для ветвей
-                    forksCount: forksCount,  // Количество ветвей снежинки
-                    layersCount: int.Parse(TextBox1.Text),  // Количество ярусов снежинки, полученное из TextBox1
-                    layer: 1,  // Первый ярус снежинки
-                    angle: (float)(360 / forksCount * (Math.PI / 180)),  // Угол между ветвями снежинки
-                    color: Color.Black);  // Цвет снежинки
-            }
-
-            timer1.Enabled = true;  // Включить таймер для анимации
+            // Создаем новую снежинку
+            currentSnowflake = new Snowflake(e.X, e.Y, size, nestingLevel);
+            fallTimer.Start(); // Запуск таймера для анимации
         }
 
-        private void timer1_Tick(object sender, EventArgs e)  // Обработчик события тика таймера
+        private void FallTimer_Tick(object sender, EventArgs e)
         {
-            sec = sec.AddSeconds(1);  // Увеличить счетчик времени на 1 секунду
-
-            // Если верхняя граница pictureBox1 не достигла нижней границы окна формы
-            if (pictureBox1.Location.Y <= this.ClientSize.Height)
+            if (currentSnowflake != null)
             {
-                pictureBox1.Location = new Point(pictureBox1.Location.X, pictureBox1.Location.Y + 1);  // Перемещаем картинку вниз на 1 пиксель
-            }
-            else timer1.Enabled = false;  // Отключаем таймер, когда картинка достигла нижней границы формы
-        }
+                currentSnowflake.Fall(5); // Скорость падения
 
-        // Метод для рисования снежинки с рекурсией
-        private void DrawSnowflake(Graphics graphics, Point center, int radius, float radiusScale, int forksCount, int layersCount, int layer, float angle, Color color)
-        {
-            for (int localForkIndex = 0; localForkIndex < forksCount; localForkIndex++)  // Цикл по количеству ветвей
-            {
-                var forkCenter = new Point(  // Рассчитываем точку окончания каждой ветви
-                    (int)(center.X + radius * Math.Cos(localForkIndex * angle)),
-                    (int)(center.Y + radius * Math.Sin(localForkIndex * angle)));
-
-                graphics.DrawLine(new Pen(color), center.X, center.Y, forkCenter.X, forkCenter.Y);  // Рисуем линию от центра к точке окончания ветви
-
-                if (layer != layersCount)  // Если текущий ярус не последний
+                // Проверка, достигла ли снежинка нижнего края формы
+                if (currentSnowflake.PositionY > this.Height)
                 {
-                    // Рекурсивно рисуем ветви следующего яруса
-                    DrawSnowflake(
-                        graphics: graphics,
-                        center: forkCenter,
-                        radius: (int)(radius * radiusScale),  // Новый радиус для следующего яруса
-                        radiusScale: radiusScale,
-                        forksCount: forksCount,
-                        layersCount: layersCount,
-                        layer: layer + 1,  // Следующий ярус
-                        angle: angle,
-                        color: color);
+                    fallTimer.Stop();
+                    currentSnowflake = null;
                 }
+
+                this.Invalidate(); // Обновление формы для перерисовки
             }
         }
 
-        /// <summary>
-        /// Нарисовать снежинку
-        /// </summary>
-        /// <param name="graphics">Графика для рисования</param>
-        /// <param name="center">Центральная точка снежинки</param>
-        /// <param name="radius">Радиус снежинки</param>
-        /// <param name="forksCount">Количество ветвлений у снежинки</param>
-        /// <param name="layersCount">Количество ярусов снежинки</param>
-        /// <param name="angle">Угол между ветвями</param>
-        /// <param name="color">Цвет снежинки</param>
-        public void DrawSnowflake(Graphics graphics, Point center, int radius, float radiusScale,
-            int forksCount, int layersCount, float angle, Color color)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            DrawSnowflake(  // Вызов основного метода рисования снежинки
-                graphics: graphics,
-                center: center,
-                radius: radius,
-                radiusScale: radiusScale,
-                forksCount: forksCount,
-                layersCount: layersCount,
-                layer: 1,  // Начинаем с первого яруса
-                angle: angle,
-                color: color);
-        }
+            base.OnPaint(e);
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void Form5_Load(object sender, EventArgs e) 
-        {
+            // Рисуем текущую снежинку
+            if (currentSnowflake != null)
+            {
+                currentSnowflake.Draw(e.Graphics);
+            }
         }
     }
+
+    public class Snowflake
+    {
+        // Свойство, которое хранит текущую координату X снежинки
+        public int PositionX;
+
+        // Свойство, которое хранит текущую координату Y снежинки
+        public int PositionY;
+
+        // Переменная для хранения размера снежинки
+        private int size;
+
+        // Переменная для хранения уровня вложенности (глубины рекурсии)
+        private int nestingLevel;
+
+        // Конструктор класса Snowflake, принимающий координаты, размер и уровень вложенности
+        public Snowflake(int x, int y, int size, int nestingLevel)
+        {
+            // Устанавливаем координату X снежинки
+            this.PositionX = x;
+
+            // Устанавливаем координату Y снежинки
+            this.PositionY = y;
+
+            // Устанавливаем размер снежинки
+            this.size = size;
+
+            // Устанавливаем уровень вложенности снежинки
+            this.nestingLevel = nestingLevel;
+        }
+
+        // Метод, который управляет падением снежинки, увеличивая её координату Y
+        public void Fall(int speed)
+        {
+            // Увеличиваем координату Y на значение скорости (перемещение вниз)
+            PositionY += speed;
+        }
+
+        // Метод для рисования снежинки на заданной графической поверхности (Graphics)
+        public void Draw(Graphics g)
+        {
+            // Вызываем рекурсивный метод рисования снежинки, передавая текущие координаты, размер и уровень вложенности
+            DrawSnowflake(g, PositionX, PositionY, size, nestingLevel);
+        }
+
+        // Приватный метод, который рисует снежинку рекурсивным образом
+        private void DrawSnowflake(Graphics g, int x, int y, int size, int nestingLevel)
+        {
+            // Базовый случай: если уровень вложенности равен нулю, останавливаем рекурсию
+            if (nestingLevel == 0)
+                return;
+
+            // Создаем ручку для рисования линий (черного цвета, толщиной 1)
+            Pen pen = new Pen(Color.Black, 1);
+
+            // Угол между лучами снежинки (в радианах), здесь это 45 градусов (π / 4)
+            double angleIncrement = Math.PI / 4;
+
+            // Цикл для рисования 8 лучей снежинки
+            for (int i = 0; i < 8; i++)
+            {
+                // Вычисляем угол текущего луча
+                double angle = i * angleIncrement;
+
+                // Вычисляем конечные координаты луча (по формуле для круговых координат)
+                int xEnd = (int)(x + size * Math.Cos(angle));
+                int yEnd = (int)(y + size * Math.Sin(angle));
+
+                // Рисуем линию от центра (x, y) до конечной точки (xEnd, yEnd)
+                g.DrawLine(pen, x, y, xEnd, yEnd);
+
+                // Рекурсивный вызов для рисования меньших снежинок на концах текущих лучей
+                DrawSnowflake(g, xEnd, yEnd, size / 3, nestingLevel - 1);
+            }
+        }
+    }
+
 }
